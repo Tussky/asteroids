@@ -20,6 +20,7 @@ def main():
     dt = 0
     player = Player(x=SCREEN_WIDTH / 2, y=SCREEN_HEIGHT / 2)
     while True:
+
         screen.fill((0, 0, 0))
         player.draw(screen)
 
@@ -28,7 +29,10 @@ def main():
                 return
 
         dt = clock.tick(60) / 1_000
-        pygame.display.flip()
+
+        player.update(dt)
+
+        pygame.display.flip()  # renders the screen
 
 
 if __name__ == "__main__":

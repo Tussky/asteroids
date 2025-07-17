@@ -1,5 +1,7 @@
 import pygame
 
+from asteroidfield import AsteroidField
+from asteroids import Asteroid
 from constants import (
     ASTEROID_KINDS,
     ASTEROID_MAX_RADIUS,
@@ -22,16 +24,14 @@ def main():
     # group creation
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroid_group = pygame.sprite.Group()
+
+    Asteroid.containers = (updatable, drawable, asteroid_group)
     Player.containers = (updatable, drawable)
+    AsteroidField.containers = updatable
 
     player = Player(x=SCREEN_WIDTH / 2, y=SCREEN_HEIGHT / 2)
-
-    print(updatable)
-    print("printing updatables")
-    for obj in updatable:
-        print(obj)
-        print(type(obj))
-
+    asteroid_field = AsteroidField()
     while True:
         screen.fill((0, 0, 0))
         for to_draw in drawable:  # for some reason this must be individual

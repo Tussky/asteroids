@@ -43,6 +43,11 @@ def main():
         dt = clock.tick(60) / 1_000
 
         updatable.update(dt)
+
+        for asteroid in asteroid_group:
+            if asteroid.collides_with(player):
+                return
+
         pygame.display.flip()  # renders the screen
 
 

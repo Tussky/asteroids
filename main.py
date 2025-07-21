@@ -48,6 +48,12 @@ def main():
         for asteroid in asteroid_group:
             if asteroid.collides_with(player):
                 return
+        for shot in all_shots:
+            for asteroid in asteroid_group:
+                if asteroid.collides_with(shot):
+                    asteroid.kill()
+                    shot.kill()
+
         pygame.display.flip()  # renders the screen
 
 
